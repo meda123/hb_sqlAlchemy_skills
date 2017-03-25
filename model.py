@@ -17,7 +17,17 @@ class Brand(db.Model):
 
     __tablename__ = "brands"
 
-    pass
+
+    brand_id = db.Column(db.String(5), primary_key=True)
+    name = db.Column(db.String(50), nullable=False)
+    founded = db.Column(db.Integer, nullable=True)
+    headquarters = db.Column(db.String(50), nullable=True)
+    discontinued = db.Column(db.Integer, nullable=True)
+
+    def __repr__(self):
+        """Prints brand_id, name (brand name), founded, hq, and disct"""
+
+        return "<Brand brand_id=%s name=%s founded=%s headquarters=%s discontinued=%s>" % (self.brand_id, self.name, self.founded, self.headquarters, self.discontinued)
 
 
 class Model(db.Model):
@@ -25,7 +35,19 @@ class Model(db.Model):
 
     __tablename__ = "models"
 
-    pass
+    model_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    year = db.Column(db.Integer, nullable=False)
+    brand_id = db.Column(db.String(5), db.ForeignKey('brands.brand_id'))
+    name = db.Column(db.String(50), nullable=False)
+
+    # Define relationsip to brand 
+    brand = db.relationship("Brand",
+                            backref=db.backref("models", order_by=model_id))
+
+    def __repr__(self):
+        """Prints model_id, year, brand_id, and name."""
+
+        return "<Model model_id=%s year=%s brand_id=%s name=%s>" % (self.model_id, self.year, self.brand_id, self.name)
 
 # End Part 1
 
