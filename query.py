@@ -23,13 +23,18 @@ init_app()
 # 1. What is the datatype of the returned value of
 # ``Brand.query.filter_by(name='Ford')``?
 
+""" The datatype of the returned value is a python object, in this case, Ford
+is an instance of the Brands table. """
+
 
 
 # 2. In your own words, what is an association table, and what type of
 # relationship (many to one, many to many, one to one, etc.) does an
 # association table manage?
 
-
+""" An association table is created solely for the purpose of being a "glue"
+between two other tables. Therefore, an association table manages a many to 
+many relationship (better yet, it holds two, one to many relationship ."""
 
 
 # -------------------------------------------------------------------

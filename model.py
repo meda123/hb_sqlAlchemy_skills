@@ -17,7 +17,6 @@ class Brand(db.Model):
 
     __tablename__ = "brands"
 
-
     brand_id = db.Column(db.String(5), primary_key=True)
     name = db.Column(db.String(50), nullable=False)
     founded = db.Column(db.Integer, nullable=True)
